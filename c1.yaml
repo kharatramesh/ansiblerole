@@ -1,0 +1,10 @@
+---
+- name: create container
+  hosts: web
+  tasks:
+  - name: launch container
+    docker_container:
+      name: c1
+      image: httpd
+      ports:
+      - "9090:80"
