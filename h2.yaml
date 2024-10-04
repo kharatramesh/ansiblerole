@@ -1,0 +1,35 @@
+---
+- name: learning handlers
+  hosts: web
+  tasks:
+  - name: copy web.conf 
+    copy:
+      src: web.conf
+      dest: /etc/httpd/conf/httpd.conf
+    changed_when: true
+
+    notify:
+    - starthttpd
+    - printdata
+
+  - name: create file
+    file:
+      path: /home/1.txt
+      state: touch
+
+    notify:
+    - printdata
+
+  handlers:
+  - name: printdata
+    debug:
+      msg: "data changed"
+    register: hello
+
+  - name: starthttpd
+    service:
+      name: httpd
+      state: restarted
+      enabled: true
+
+    

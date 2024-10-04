@@ -1,0 +1,26 @@
+---
+# tasks file for project1
+- name: install httpd
+  dnf:
+    name: httpd
+    state: present
+- name: update index.html
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644
+- name: jinga
+  template:
+    src: templates/t1.j2
+    dest: /etc/motd
+    mode: 0777
+- name: copy from remote location
+  copy:
+    src: files/web.conf
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+  notify:
+    - samosafile

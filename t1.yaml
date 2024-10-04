@@ -1,0 +1,13 @@
+---
+- name: working with jinga
+  hosts: all
+  vars:
+    system_owner: test@gmail.com
+  tasks:
+  - name: changing motd file in all servers
+    template:
+      src: t1.j2
+      dest: /etc/motd
+      owner: root
+      group: root
+      mode: 777

@@ -1,0 +1,8 @@
+---
+- name: calling role
+  hosts: db
+  vars:
+    system_owner: test2@gmail.com
+  roles:
+    - project1
+    - rhel-system-roles.firewall

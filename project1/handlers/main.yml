@@ -1,0 +1,7 @@
+---
+
+name: samosafile
+service:
+  name: httpd
+  enabled: true
+  state: restarted

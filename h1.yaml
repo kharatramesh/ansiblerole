@@ -1,0 +1,22 @@
+---
+- name: learning handlers
+  hosts: web
+  tasks:
+  - name: install httpd
+    dnf:
+      name: httpd
+      state: present
+  - name: starthttpd
+    service:
+      name: httpd
+      state: restarted
+      enabled: true
+    notify:
+    - fileupdate
+    
+  handlers:
+
+  - name: fileupdate
+    copy:
+      dest: /var/www/html/index.html
+      content: "I like burger1"
