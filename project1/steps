@@ -1,0 +1,30 @@
+# cd /usr/share/ansible/roles
+# ansible-galaxy role init project1
+# dnf install tree 
+# tree project1
+
+----------------------
+then follow folder structure and their contents 
+once done then run
+
+ansible-galaxy role list
+
+-------------------------
+cd /playbook
+touch r1.yaml
+vi r1.yaml
+---
+- name: calling role
+  hosts: db
+  vars:
+    system_owner: test2@gmail.com
+  roles:
+    - project1
+    - rhel-system-roles.firewall
+
+
+ and then save it
+-------------------------
+then run 
+ansible-playbook -C r1.yaml
+ansible-playbook  r1.yaml
