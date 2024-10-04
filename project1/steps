@@ -1,3 +1,5 @@
+How to install and create role
+
 # cd /usr/share/ansible/roles
 # ansible-galaxy role init project1
 # dnf install tree 
@@ -28,3 +30,15 @@ vi r1.yaml
 then run 
 ansible-playbook -C r1.yaml
 ansible-playbook  r1.yaml
+---------------------------
+few more roles to add here
+ansible-galaxy collection install community.docker
+ansible-galaxy collection install kubernetes.core
+
+to list collection
+
+ansible-galaxy collection list
+
+To check installed modules, use below command
+
+ansible-doc -l 
